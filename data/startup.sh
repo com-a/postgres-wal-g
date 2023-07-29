@@ -1,11 +1,12 @@
-#
-/usr/lib/postgresql/14/bin/pg_ctl -D "/var/lib/postgresql/data"  -m fast -w stop
+#!/usr/bin/env bash
+$(echo  wal-g backup-list ) >/tmp/bukup_list
 
-if [ ! -d /var/lib/postgresql/data ]; then
-  wal-g backup-fetch /var/lib/postgresql/data/ LATEST
-else
-  touch /var/lib/pgsql/data/recovery.signal
+if [ -s /tmp/bukup_list ]; then
+#空の場合の処理
+    rm -rf /var/lib/postgresql/data/*
+    wal-g backup-fetch /var/lib/postgresql/data/ LATEST
+
+    pg_ctl -D /var/lib/postgresql/data -w start
+    pg_ctl -D /var/lib/postgresql/data -w stop
 fi
-
-
-/usr/lib/postgresql/14/bin/pg_ctl -D "/var/lib/postgresql/data" -w start
+exec "$@"
