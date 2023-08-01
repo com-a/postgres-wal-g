@@ -11,7 +11,6 @@ if [ ! -s /tmp/bukup_list ]; then
 
     pg_ctl -D /var/lib/postgresql/data -w reload
     rm /docker-entrypoint-initdb.d/setup.sh
-    rm /var/lib/pgsql/data/backup_label
 
-    wal-g backup-push /var/lib/postgresql/data/
+    
 fi
