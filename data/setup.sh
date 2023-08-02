@@ -9,8 +9,7 @@ if [ ! -s /tmp/bukup_list ]; then
     sed -i -e 's/#archive_timeout = 0/archive_timeout = 60/g' /var/lib/postgresql/data/postgresql.conf
     sed -i -e 's/#wal_level = replica/wal_level = replica/g' /var/lib/postgresql/data/postgresql.conf
 
-    pg_ctl -D /var/lib/postgresql/data -w reload
-    rm /docker-entrypoint-initdb.d/setup.sh
+    #pg_ctl -D /var/lib/postgresql/data -w reload
+    #rm /docker-entrypoint-initdb.d/setup.sh
 
-    
 fi
