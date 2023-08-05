@@ -23,6 +23,6 @@ COPY ./data/startup.sh /tmp/startup.sh
 RUN chmod 775 /tmp/startup.sh
 
 
-RUN (crontab -l; echo "0 5 * * * wal-g backup-push /var/lib/postgresql/data") | crontab -
-RUN tmp/startup.sh
+
+RUN /tmp/startup.sh
 
