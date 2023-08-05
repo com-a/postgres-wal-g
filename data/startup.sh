@@ -13,3 +13,6 @@ if [ -s /tmp/bukup_list ]; then
     touch "/var/lib/postgresql/data/recovery.signal"
     
 fi
+
+
+/usr/local/bin/docker-entrypoint.sh postgres

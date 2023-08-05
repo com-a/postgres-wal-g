@@ -22,6 +22,6 @@ RUN chmod 775 /docker-entrypoint-initdb.d/setup.sh
 COPY ./data/startup.sh /tmp/startup.sh
 RUN chmod 775 /tmp/startup.sh
 
-RUN /tmp/startup.sh
+CMD [ "/tmp/startup.sh" ]
 USER postgres
 
