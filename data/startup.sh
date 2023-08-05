@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 $(echo  wal-g backup-list ) >/tmp/bukup_list
+chown postgres:postgres /tmp/bukup_list
 
 
 if [ -s /tmp/bukup_list ]; then
