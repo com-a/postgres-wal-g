@@ -14,5 +14,9 @@ if [ -s /tmp/bukup_list ]; then
     
 fi
 
+env >> /tmp/crontab
+echo "0 5 * * * wal-g backup-push /var/lib/postgresql/data" >> /tmp/crontab
+echo "0 8 * * *  wal-g delete retain 2 --confirm" >> /tmp/crontab
+crontab /tmp/crontab
 
 /usr/local/bin/docker-entrypoint.sh postgres

@@ -11,6 +11,3 @@ if [ ! -s /tmp/bukup_list ]; then
     sed -i -e 's/#wal_level = replica/wal_level = replica/g' /var/lib/postgresql/data/postgresql.conf
 fi
 
-env >> /tmp/crontab
-echo "0 5 * * * wal-g backup-push /var/lib/postgresql/data" >> /tmp/crontab
-crontab /tmp/crontab
