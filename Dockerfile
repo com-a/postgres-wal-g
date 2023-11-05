@@ -19,10 +19,10 @@ RUN chown postgres:postgres /usr/local/bin/wal-g
 COPY ./data/setup.sh /docker-entrypoint-initdb.d/setup.sh
 RUN chmod 775 /docker-entrypoint-initdb.d/setup.sh
 
-COPY ./data/startup.sh /tmp/startup.sh
-COPY ./data/backup.sh /tmp/backup.sh
-RUN chmod 775 /tmp/*.sh
+COPY ./data/startup.sh /startup.sh
+COPY ./data/backup.sh /backup.sh
+RUN chmod 775 /*.sh
 
-CMD [ "/tmp/startup.sh" ]
+CMD [ "/startup.sh" ]
 USER postgres
 
