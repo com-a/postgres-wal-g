@@ -22,8 +22,8 @@ RUN chmod 775 /docker-entrypoint-initdb.d/setup.sh
 COPY ./data/startup.sh /startup.sh
 COPY ./data/backup.sh /backup.sh
 RUN chmod 775 /*.sh
-RUN service cron start
+
 
 CMD [ "/startup.sh" ]
-USER postgres
+#USER postgres
 
