@@ -12,8 +12,8 @@ if [ -s /tmp/bukup_list_startup ]; then
     
 fi
 
-env >> /tmp/crontab
+#env >> /tmp/crontab
 echo "*/3 * * * * sh /backup.sh" >> /tmp/crontab
 crontab /tmp/crontab
-
+service cron start
 /usr/local/bin/docker-entrypoint.sh postgres
