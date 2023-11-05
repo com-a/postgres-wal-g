@@ -14,7 +14,8 @@ ENV WALG_COMPRESSION_METHOD "lz4"
 
 RUN wget -P /tmp https://github.com/wal-g/wal-g/releases/download/v0.2.19/wal-g.linux-amd64.tar.gz
 RUN tar -C /usr/local/bin -xvf /tmp/wal-g.linux-amd64.tar.gz
-RUN chown postgres:postgres /usr/local/bin/wal-g
+#RUN chown postgres:postgres /usr/local/bin/wal-g
+RUN chown root:root /usr/local/bin/wal-g
 
 COPY ./data/setup.sh /docker-entrypoint-initdb.d/setup.sh
 RUN chmod 775 /docker-entrypoint-initdb.d/setup.sh
